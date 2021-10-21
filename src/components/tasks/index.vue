@@ -9,7 +9,7 @@
 <script>
 import Task from '../task';
 
-    export default {
+    export default { 
         name: 'Tasks',
         props: {
             tasks: Array,
