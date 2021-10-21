@@ -1,5 +1,5 @@
 <template>
-    <form @submit="onSubmit" class="add-form">
+    <form @submit="onSubmit" class="add-form" v-show="showAddTask" >
         <div class="form-control">
             <label for='task-text'>Task</label>
             <input type="text" v-model="text" name="text" placeholder="Add Task" id='task-text' />
@@ -25,6 +25,9 @@
 <script>
     export default {
         name: 'AddTask',
+        props: {
+            showAddTask: Boolean
+        },
         data() {
             return {
                 text: '',
