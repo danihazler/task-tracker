@@ -1,8 +1,11 @@
 <template>
   <div class="container">
-    <Header title="Task Tracker" @toggle-add-task='toggleAddTask' :showAddTask="showAddTask" />
-    <AddTask @add-task='addTask' :showAddTask="showAddTask" />
-    <Tasks :tasks="tasks" @delete-task='deleteTask' />
+    <Header 
+      title="Task Tracker" 
+      @toggle-add-task='toggleAddTask' 
+      :showAddTask="showAddTask" 
+    />
+    <router-view :showAddTask="showAddTask" ></router-view>
     <Footer />
   </div>
 </template>
@@ -10,60 +13,22 @@
 <script>
 import Header from './components/header';
 import Footer from './components/footer';
-import Tasks from './components/tasks';
-import AddTask from './components/add-task';
 
 export default {
   name: 'App',
   components: {
     Header,
     Footer,
-    Tasks,
-    AddTask
   },
   data() {
     return {
-      tasks: [],
       showAddTask: true
     }
   },
   methods: {
-    async deleteTask(id) {
-      if(confirm('Are you sure?')){
-        const res = await fetch(`api/tasks/${id}`, {
-          method: 'DELETE',
-        })
-
-        res.status === 200
-          ? (this.tasks = this.tasks.filter((task) => task.id !== id))
-          : alert('Error deleting task')
-      }
-    },
-    async addTask(task) {
-      const res = await fetch('api/tasks', {
-        method: 'POST',
-        headers: {
-          'Content-type': 'application/json'
-        },
-        body: JSON.stringify(task)
-      })
-
-      const data = await res.json();
-
-      this.tasks = [...this.tasks, data];
-    },
     toggleAddTask() {
       this.showAddTask = !this.showAddTask;
     },
-    async fetchTasks() {
-      const res = await fetch('api/tasks');
-      const data = await res.json();
-      
-      return data;
-    },
-  },
-  async created() {
-    this.tasks = await this.fetchTasks();
   },
 }
 </script>
