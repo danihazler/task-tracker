@@ -45,7 +45,8 @@
                 }
 
                 const newTask = {
-                    id: Math.floor(Math.random() * 100000),
+                    // not necessary anymore, json-server creates an id
+                    // id: Math.floor(Math.random() * 100000), 
                     text: this.text,
                     day: this.day,
                     reminder: this.reminder
@@ -85,15 +86,11 @@
     .form-control-check {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-    }
-
-    .form-control-check label {
-        flex: 1;
+        justify-content: flex-start;
     }
 
     .form-control-check input {
-        flex: 2;
         height: 20px;
+        width: 20%;
     }
 </style>
