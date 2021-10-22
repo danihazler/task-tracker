@@ -3,11 +3,13 @@
     <Header title="Task Tracker" @toggle-add-task='toggleAddTask' :showAddTask="showAddTask" />
     <AddTask @add-task='addTask' :showAddTask="showAddTask" />
     <Tasks :tasks="tasks" @delete-task='deleteTask' />
+    <Footer />
   </div>
 </template>
 
 <script>
 import Header from './components/header';
+import Footer from './components/footer';
 import Tasks from './components/tasks';
 import AddTask from './components/add-task';
 
@@ -15,6 +17,7 @@ export default {
   name: 'App',
   components: {
     Header,
+    Footer,
     Tasks,
     AddTask
   },

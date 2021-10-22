@@ -11,6 +11,12 @@
       "text": "Groceries",
       "day": "March 3rd at 11:30pm",
       "reminder": false
+    },
+    {
+      "text": "Say Hello",
+      "day": "April 1st at 3pm",
+      "reminder": false,
+      "id": "FbZd8QB"
     }
   ]
 }
